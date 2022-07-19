@@ -1,12 +1,14 @@
-const express=require('express')
-const cors=require("cors")
-const app=express()
+const express = require("express");
+const cors = require("cors");
+const app = express();
+const path = require("path");
 
-app.use(cors())
+app.use(express.static(path.join(__dirname, "frontend/build")));
 
-app.get('/',(req,res)=>{
-    res.send("Welcome to node")
-})
+app.use(cors());
 
-app.listen(3000,()=>console.log("Server started..."))
+app.get("/", (req, res) => {
+  res.send("Welcome to node");
+});
 
+app.listen(3000, () => console.log("Server started..."));
